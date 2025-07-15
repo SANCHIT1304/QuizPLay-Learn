@@ -1,0 +1,46 @@
+# Node.js (Backend & Frontend)
+Backend/node_modules/
+Frontend/node_modules/
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Dependency directories
+.pnp
+.pnp.js
+
+# dotenv environment files
+Backend/.env
+Frontend/.env
+.env
+
+# Build output (Vite/React)
+Frontend/dist/
+Frontend/build/
+
+# Python (Quiz_Server)
+Quiz_Server/venv/
+Quiz_Server/__pycache__/
+**/__pycache__/
+*.py[cod]
+*.so
+*.egg
+*.egg-info/
+# dist/
+# build/
+
+# Editor directories and files
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+# Other
+coverage/

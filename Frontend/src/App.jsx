@@ -16,12 +16,14 @@ import SkillTrack from './pages/SkillTrack';
 import ProtectedRoute from './components/ProtectedRoute';
 import PlaylistDetail from './pages/PlaylistDetail';
 import QuizPage from './pages/QuizPage'
+import { Toaster } from 'react-hot-toast';
 
 function App() {
   return (
     <ThemeProvider>
       <AuthProvider>
         <div className="min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
+          <Toaster position="top-center" reverseOrder={false} />
           <Routes>
             <Route path="/" element={<LandingPage />} />
             <Route path="/login" element={<LoginPage />} />

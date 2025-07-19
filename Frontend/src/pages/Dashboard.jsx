@@ -14,8 +14,8 @@ const Dashboard = () => {
   const yearData = [
     { year: '1st Year', subjects: 8, icon: '1', color: 'from-blue-500 to-blue-600' },
     { year: '2nd Year', subjects: 10, icon: '2', color: 'from-green-500 to-green-600' },
-    { year: '3rd Year', subjects: 10, icon: '3', color: 'from-purple-500 to-purple-600' },
-    { year: '4th Year', subjects: 6, icon: '4', color: 'from-orange-500 to-orange-600' }
+    { year: '3rd Year', subjects: 9, icon: '3', color: 'from-purple-500 to-purple-600' },
+    { year: '4th Year', subjects: 4, icon: '4', color: 'from-orange-500 to-orange-600' }
   ];
 
   const placementTopics = [

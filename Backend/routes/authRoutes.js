@@ -9,7 +9,7 @@
 
 
 import express from 'express';
-import { registerUser, loginUser, loggedUser } from '../controllers/authController.js';
+import { registerUser, loginUser, loggedUser, updateProfile } from '../controllers/authController.js';
 import protect from '../middlewares/authMiddleware.js';
 
 const router = express.Router();
@@ -17,6 +17,7 @@ const router = express.Router();
 router.post('/register', registerUser);
 router.post('/login', loginUser);
 router.get('/user', protect, loggedUser);
+router.put('/updateUser/:id', updateProfile);
 
 // router.get('/profile', protect, (req, res) => {
 //   res.json({

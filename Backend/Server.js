@@ -5,6 +5,8 @@ import 'dotenv/config'
 import connectDB from './config/mongodb.js'
 import authRoutes from './routes/authRoutes.js';
 import playlistRoutes from './routes/playlistRoutes.js';
+import quizRoutes from "./routes/quizRoutes.js";
+import User from "./models/User.js";
 
 
 // const express = require('express')
@@ -76,6 +78,34 @@ app.get('/api/quiz', async (req, res) => {
     res.status(500).json({ error: 'Failed to fetch quiz' });
   }
 });
+
+app.use("/api", quizRoutes);
+
+app.get('/api/leaderboard', async (req, res) => {
+  try {
+    const users = await User.find({role: "user"})
+      .sort({ tokens: -1 }) // highest tokens first
+      .select("name tokens streak year quizHistory avatar email") // only needed fields
+
+    const leaderboard = users.map((u, idx) => ({
+      rank: idx + 1,
+      name: u.name,
+      avatar: u.avatar,
+      tokens: u.tokens,
+      quizzes: u.quizHistory.length,
+      streak: u.streak,
+      year: u.year,
+      userId: u._id
+    }));
+
+    res.json(leaderboard);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Failed to fetch leaderboard" });
+  }
+});
+
+
 
 //routes or api endpoints
 app.get('/', (req, res) => {

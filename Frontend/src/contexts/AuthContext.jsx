@@ -60,7 +60,7 @@ export const AuthProvider = ({ children }) => {
   // }, [token]);
 
   return (
-    <AuthContext.Provider value={{storetokenInLS, user, logout}}>
+    <AuthContext.Provider value={{storetokenInLS, user, logout, userAuthentication}}>
       {children}
     </AuthContext.Provider>
   );

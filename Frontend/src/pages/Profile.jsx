@@ -19,9 +19,33 @@ const Profile = () => {
   // }, [user]);
 
 
-  const handleSave = () => {
+  const handleSave = async () => {
+    try {
+      // await login(email, password);
+      const res= await fetch(`http://localhost:3000/api/auth/updateUser/${user._id}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          name: editedUser.name,
+          email: editedUser.email,
+          year: editedUser.year,
+        }),
+      });
+      if (!res.ok) {
+        throw new Error("Failed to update");
+      }
+
+      const updatedUser = await res.json();
+      // Update the context or local state if needed
+      setEditedUser(updatedUser);
+      setIsEditing(false);
+    } catch (err) {
+    console.error(err);
+  }
     // In a real app, this would update the user data
-    setIsEditing(false);
+    // setIsEditing(false);
   };
 
   const handleCancel = () => {
@@ -30,7 +54,7 @@ const Profile = () => {
   };
 
   const stats = [
-    { label: 'Quizzes Completed', value: 23, icon: BookOpen, color: 'text-blue-600' },
+    { label: 'Quizzes Completed', value: user.quizHistory.length, icon: BookOpen, color: 'text-blue-600' },
     { label: 'Total Tokens', value: user.tokens, icon: Trophy, color: 'text-yellow-600' },
     { label: 'Current Streak', value: `${user.streak} days`, icon: Target, color: 'text-orange-600' },
     { label: 'Subjects Studied', value: 8, icon: GraduationCap, color: 'text-purple-600' }
@@ -78,7 +102,11 @@ const Profile = () => {
                 <div className="text-center mb-6">
                   <div className="relative inline-block">
                     <img
-                      src={user.avatar}
+                      src={
+                          user.avatar
+                          ? user.avatar
+                          : `https://ui-avatars.com/api/?name=${encodeURIComponent(user.name)}`
+                        }
                       alt={user.name}
                       className="w-24 h-24 rounded-full object-cover mx-auto mb-4"
                     />
@@ -125,10 +153,10 @@ const Profile = () => {
                         onChange={(e) => setEditedUser({...editedUser, year: e.target.value})}
                         className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
                       >
-                        <option value="1st Year">1st Year</option>
-                        <option value="2nd Year">2nd Year</option>
-                        <option value="3rd Year">3rd Year</option>
-                        <option value="4th Year">4th Year</option>
+                        <option value="1st">1st Year</option>
+                        <option value="2nd">2nd Year</option>
+                        <option value="3rd">3rd Year</option>
+                        <option value="4th">4th Year</option>
                       </select>
                     </div>
                     <div className="flex space-x-2">

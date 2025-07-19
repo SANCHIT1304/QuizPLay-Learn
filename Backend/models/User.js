@@ -27,6 +27,7 @@ const userSchema = new mongoose.Schema({
   role: { type: String, enum: ["user", "admin"], default: "user" },
   tokens: { type: Number, default: 0 },
   streak: { type: Number, default: 0 },
+  lastActiveDate: { type: Date },
   quizHistory: [
     {
       subject: String,

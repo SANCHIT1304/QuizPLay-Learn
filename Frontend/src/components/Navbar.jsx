@@ -63,7 +63,11 @@ const Navbar = () => {
                 className="flex items-center space-x-2 p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
               >
                 <img
-                  src={user.avatar}
+                  src={
+                          user.avatar
+                          ? user.avatar
+                          : `https://ui-avatars.com/api/?name=${encodeURIComponent(user.name)}`
+                        }
                   alt={user.name}
                   className="w-8 h-8 rounded-full object-cover"
                 />

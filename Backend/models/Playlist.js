@@ -11,7 +11,7 @@ const playlistSchema = new mongoose.Schema({
   },
   year: { type: String, required: true }, // E.g., "1st Year"
   subject: {type: String, required: true},
-  videos: [ // 👇 New field
+  videos: [
     {
       title: String,
       videoId: String,

@@ -135,7 +135,7 @@ const SubjectDetail = () => {
                       alt={playlist.title}
                       className="w-full h-48 object-cover"
                     />
-                    <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity">
+                    {/* <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity">
                       <Button
                         className="bg-white text-gray-900 hover:bg-gray-100"
                         onClick={() => navigate('/playlists/${playlist._id}')}
@@ -143,7 +143,7 @@ const SubjectDetail = () => {
                         <Play className="w-4 h-4 mr-2" />
                         Watch Now
                       </Button>
-                    </div>
+                    </div> */}
                   </div>
                   
                   <div className="p-6">
@@ -189,12 +189,12 @@ const SubjectDetail = () => {
                         onClick={() => navigate(`/playlists/${playlist._id}`)}
                       >
                         <Play className="w-4 h-4 mr-2" />
-                        Watch
+                        Playlist
                       </Button>
-                      <Button variant="outline" size="sm" className="flex-1" disabled>
+                      {/* <Button variant="outline" size="sm" className="flex-1" disabled>
                         <BookOpen className="w-4 h-4 mr-2" />
                         Take Quiz
-                      </Button>
+                      </Button> */}
                     </div>
                   </div>
                 </Card>

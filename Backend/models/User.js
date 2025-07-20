@@ -35,6 +35,7 @@ const userSchema = new mongoose.Schema({
       date: { type: Date, default: Date.now },
     },
   ],
+  ownedRewards: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Reward' }]
 });
 
 const User = mongoose.model("User", userSchema);

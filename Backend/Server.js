@@ -7,7 +7,9 @@ import authRoutes from './routes/authRoutes.js';
 import playlistRoutes from './routes/playlistRoutes.js';
 import quizRoutes from "./routes/quizRoutes.js";
 import User from "./models/User.js";
-
+import achievementsRoutes from './routes/achievementRoutes.js';
+import rewardsRoutes from './routes/rewardRoutes.js';
+// import protect from './middlewares/authMiddleware.js';
 
 // const express = require('express')
 const app = express()
@@ -105,6 +107,8 @@ app.get('/api/leaderboard', async (req, res) => {
   }
 });
 
+app.use('/api', achievementsRoutes);
+app.use('/api', rewardsRoutes);
 
 
 //routes or api endpoints

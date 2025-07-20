@@ -101,7 +101,7 @@ const PlaylistDetail = () => {
                           variant="outline"
                           size="sm"
                           className="flex-1 ml-2"
-                          onClick={() => navigate(`/quiz/${video.videoId}`)}
+                          onClick={() => navigate(`/quiz/${video.videoId}?title=${encodeURIComponent(video.title)}`)}
                         >
                           <BookOpen className="w-4 h-4 mr-2" />
                           Take Quiz

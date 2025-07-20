@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useSearchParams } from "react-router-dom";
 import { motion } from "framer-motion";
 import Navbar from "../components/Navbar";
 import Sidebar from "../components/Sidebar";
@@ -10,6 +10,8 @@ import { toast } from 'react-hot-toast';
 
 const QuizPage = () => {
   const { videoId } = useParams();
+  const [searchParams] = useSearchParams();
+  const title = searchParams.get("title");
   const { user, userAuthentication } = useAuth();
   const [quizData, setQuizData] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -103,7 +105,7 @@ const QuizPage = () => {
       return;
     }
 
-    const subject = `Quiz for Video: ${videoId}`;
+    const subject = `Quiz for Video: ${title || videoId}`;
 
     // Store current user data before making changes
     setPrevUserData({
